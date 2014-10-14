@@ -1,0 +1,28 @@
+on boot
+    export LD_LIBRARY_PATH /system/lib
+
+    write /sys/class/android_usb/android0/unlocked 1
+
+    mkdir /synthesis
+    mount tmpfs tmpfs /synthesis nosuid nodev
+    chown root root /synthesis
+    chmod 0711 /synthesis
+
+    mkdir /synthesis/sphinx 0700 root root
+    mkdir /synthesis/hades 0775 root root
+    mkdir /synthesis/shsd 0711 root root
+    mkdir /synthesis/shdisp 1770 root shdisp
+
+    mkdir /sdservice_tmp
+    mount tmpfs tmpfs /sdservice_tmp nosuid nodev
+    chown root root /sdservice_tmp
+    chmod 01775 /sdservice_tmp
+
+    chmod 0755 /system/bin/linker
+    chmod 0755 /system/bin/shdisp_process
+    chmod 0755 /system/bin/shsd_process
+
+service shsd_process /system/bin/shsd_process
+
+service shdisp_process /system/bin/shdisp_process
+    socket shdisp_process stream 0660 root mount

@@ -1,0 +1,11 @@
+# mount point	fstype		device			[device2]
+
+/boot		emmc		/dev/block/mmcblk0p8
+/cache		ext4		/dev/block/mmcblk0p21
+/data		ext4		/dev/block/mmcblk0p24		length=903725056
+/ldb		ext4		/dev/block/mmcblk0p22
+/calllog	ext4		/dev/block/mmcblk0p20
+/recovery	emmc		/dev/block/mmcblk0p9
+/sdcard		vfat		/dev/block/stheno
+/system		ext4		/dev/block/mmcblk0p11
+/fota		ext4		/dev/block/mmcblk0p25
